@@ -1,0 +1,64 @@
+<section id="addTask">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-wrap">
+                    <h1>Add a Task</h1>
+                    <form #f="ngForm" novalidate autocomplete="off" (ngSubmit)="addTask(f.value)">
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="taskModel.taskName" name="taskName" class="form-control" placeholder="taskName" required
+                                #reffirst='ngModel' pattern="^[a-zA-Z]*$" maxlength="15" minlength="2">
+                            <div *ngIf="reffirst.errors && (reffirst.dirty || reffirst.touched)" class="alert alert-danger">
+                                <div [hidden]="!reffirst.errors.required">
+                                    taskName is required.
+                                </div>
+                                <div [hidden]="!reffirst.errors.minlength">
+                                    Please enter atleast 2 characeters.
+                                </div>
+                                <div [hidden]="!reffirst.errors.pattern">
+                                    Please enter alphabets.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="taskDescription" name="taskModel.taskDescription" id="taskDescription" class="form-control" placeholder="TaskDescription"
+                                required #reflast>
+                            <div *ngIf="reflast.errors && (reflast.dirty || reflast.touched)" class="alert alert-danger">
+                                <div [hidden]="!reflast.errors.required">
+                                    TaskDescription is required.
+                                </div>
+                                <div [hidden]="!reflast.errors.minlength">
+                                    Please enter atleast 2 characeters.
+                                </div>
+                            </div>
+                        </div>
+                       
+						<div class="form-group">
+                            <input type="text" [(ngModel)]="movieModel.taskCompletedate" name="taskCompleteDate" id="completedate" class="form-control" placeholder="Task Complete Date"
+                                #refshot>
+								<div *ngIf="reflast.errors && (reflast.dirty || reflast.touched)" class="alert alert-danger">
+                                <div [hidden]="!reflast.errors.required">
+                                    TaskCompleteDate is required.
+                                </div>
+                                <div [hidden]="!reflast.errors.minlength">
+                                    Please enter atleast 2 characeters.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Submit Task" [disabled]="f.invalid">
+                        
+                    </form>
+                    <hr>
+                </div>
+            </div>
+            <!-- /.col-xs-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+<hr/>
+<div *ngIf="taskArray.length > 0">
+    <app-task-list [taskDetail]="taskArray"></app-task-list>
+</div>
