@@ -1,0 +1,87 @@
+<section id="addMovie">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-wrap">
+                    <h1>Add a Movie</h1>
+                    <form #f="ngForm" novalidate autocomplete="off" (ngSubmit)="addCriketer(f.value)">
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="movieModel.movieName" name="movieName" class="form-control" placeholder="movieName" required
+                                #reffirst='ngModel' pattern="^[a-zA-Z]*$" maxlength="15" minlength="2">
+                            <div *ngIf="reffirst.errors && (reffirst.dirty || reffirst.touched)" class="alert alert-danger">
+                                <div [hidden]="!reffirst.errors.required">
+                                    movieName is required.
+                                </div>
+                                <div [hidden]="!reffirst.errors.minlength">
+                                    Please enter atleast 2 characeters.
+                                </div>
+                                <div [hidden]="!reffirst.errors.pattern">
+                                    Please enter alphabets.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="movieDescription" name="movieModel.movieDescription" id="movieDescription" class="form-control" placeholder="MovieDescription"
+                                required #reflast>
+                            <div *ngIf="reflast.errors && (reflast.dirty || reflast.touched)" class="alert alert-danger">
+                                <div [hidden]="!reflast.errors.required">
+                                    MovieDescription is required.
+                                </div>
+                                <div [hidden]="!reflast.errors.minlength">
+                                    Please enter atleast 2 characeters.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="movieModel.URL" name="movieURL" id="movieurl" class="form-control" placeholder="Movie URL"
+                                #refshot>
+								<div *ngIf="reflast.errors && (reflast.dirty || reflast.touched)" class="alert alert-danger">
+                                <div [hidden]="!reflast.errors.required">
+                                    Movieurl is required.
+                                </div>
+                                <div [hidden]="!reflast.errors.minlength">
+                                    Please enter atleast 2 characeters.
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <input type="text" [(ngModel)]="movieModel.rating" name="movieRating" id="movieurl" class="form-control" placeholder="Movie URL"
+                                #refshot>
+								<div *ngIf="reflast.errors && (reflast.dirty || reflast.touched)" class="alert alert-danger">
+                                <div [hidden]="!reflast.errors.required">
+                                    Movieurl is required.
+                                </div>
+                                <div [hidden]="!reflast.errors.minlength">
+                                    Please enter atleast 2 characeters.
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <input type="text" [(ngModel)]="movieModel.releasedate" name="releaseDate" id="releaseate" class="form-control" placeholder="Movie Release Date"
+                                #refshot>
+								<div *ngIf="reflast.errors && (reflast.dirty || reflast.touched)" class="alert alert-danger">
+                                <div [hidden]="!reflast.errors.required">
+                                    MovieReleaseDate is required.
+                                </div>
+                                <div [hidden]="!reflast.errors.minlength">
+                                    Please enter atleast 2 characeters.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Add" [disabled]="f.invalid">
+                        
+                    </form>
+                    <hr>
+                </div>
+            </div>
+            <!-- /.col-xs-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+<hr/>
+<div *ngIf="moviesArray.length > 0">
+    <app-movies-list [movieDetail]="moviesArray"></app-movies-list>
+</div>
