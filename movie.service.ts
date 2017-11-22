@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { MovieList } from 'app/interface/movielist';
+import { TaskList } from 'app/interface/Tasklist';
 
 
 @Injectable()
-export class MovieService {
+export class TaskService {
 
-  movieList: MovieList[] = [];
+  taskList: TaskList[] = [];
 
   /** Add movie in the array List. */
-  addMovie(movieDetail: MovieList) {
-    this.movieList.unshift(movieDetail);
+  addTask(taskDetail: TaskList) {
+    this.taskList.unshift(taskDetail);
   }
 
   /**Get the movie list from the array. */
-  getMovie(): movieList[] {
-    return this.movieList;
+  getTask(): taskList[] {
+    return this.taskList;
   }
 
 
