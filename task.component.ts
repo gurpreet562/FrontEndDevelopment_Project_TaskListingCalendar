@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   }
 
   /**Add a movie */
-  addCriketer(values) {
+  addTask(values) {
     // values : {
     //   taskName: ""
     //   taskDescription: ""
